@@ -1,0 +1,82 @@
+title Add Member
+
+
+entryspacing 0.5
+participantgroup #orange  **View**
+participant "**consoleUi:console**" as console
+end
+participantgroup #lightblue  **Controller**
+
+participant "**InputValidation:validaiton**" as validation
+participant "**AddMemberAction:currentAction**" as currentAction
+end
+
+participantgroup #lightgreen  **Domain**
+participant "**Register:register**" as register
+end
+
+
+		autoactivation on
+		currentAction->validation:**validate(view, Messages.PNR.str)**
+       	loop
+        autoactivation off
+        validation->console:**displayMessage(Messages.PNR.str)**
+        autoactivation on
+        validation->console:**readUserInput()**
+     	validation<--console:**input.trim()**
+        autoactivation off
+        validation->validation:** test(input)**
+        autoactivation on
+        
+          alt test(input) = false
+          		autoactivation off
+                validation<--validation:**false**
+          	 validation->console:**displayMessage(validation.userWarnMsg)**
+             autoactivation on
+          else test(input) = true
+          autoactivation off
+          validation<--validation:**true**
+          	validation->validation:**break**
+            autoactivation on
+          end
+        end
+        currentAction<--validation:**input**
+        
+        autoactivation off
+     	currentAction->register:**findMemberByPnr(pnr)**
+     	autoactivation on
+        alt isFound = false
+        	currentAction<--register:**false**
+        	currentAction->validation:**validate(view, Messages.NAME.str)**
+            	loop
+        autoactivation off
+        validation->console:**displayMessage(Messages.NAME.str)**
+        autoactivation on
+        validation->console:**readUserInput()**
+     	validation<--console:**input.trim()**
+        autoactivation off
+        validation->validation: **test(input)**
+         autoactivation on
+
+          alt test(input) = false
+          autoactivation off
+          validation<--validation:**false**	
+          	 validation->console:**displayMessage(validation.userWarnMsg)**
+             autoactivation on
+          else test(input) = true
+          autoactivation off
+          validation<--validation:**true**
+          	validation->validation:**break**
+            autoactivation on
+          end
+        end
+        currentAction<--validation:**input**
+        autoactivation off
+            validation->register:**addMember(name, pnr)**
+            
+            validation->console:**displayMessage(Messages.SUCCESS.str)**
+        else isFound = true
+        	currentAction<--register:**true**
+        	currentAction->console:**displayMessage(Messages.MEMBER_EXISTS.str)** 				
+        end
+

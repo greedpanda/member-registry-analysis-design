@@ -1,0 +1,49 @@
+{
+  "jd6789" : {
+    "name" : "Jane Doe",
+    "pnr" : "19876543212",
+    "mid" : "jd6789",
+    "boats" : {
+      "012345" : {
+        "regnum" : "012345",
+        "length" : 5.0,
+        "type" : "motorsailer"
+      }
+    }
+  },
+  "fb3210" : {
+    "name" : "Frodo Baggins",
+    "pnr" : "832108321012",
+    "mid" : "fb3210",
+    "boats" : { }
+  },
+  "jd2345" : {
+    "name" : "John Doe",
+    "pnr" : "123412341234",
+    "mid" : "jd2345",
+    "boats" : {
+      "123456" : {
+        "regnum" : "123456",
+        "length" : 5.0,
+        "type" : "sailboat"
+      },
+      "543215" : {
+        "regnum" : "543215",
+        "length" : 6.0,
+        "type" : "other"
+      }
+    }
+  },
+  "kk5771" : {
+    "name" : "Katya Ka",
+    "pnr" : "777777777777",
+    "mid" : "kk5771",
+    "boats" : {
+      "777777" : {
+        "regnum" : "777777",
+        "length" : 5.0,
+        "type" : "kayak/canoe"
+      }
+    }
+  }
+}
