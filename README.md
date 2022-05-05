@@ -1,3 +1,5 @@
+# [Task description](https://coursepress.lnu.se/courses/object-oriented-analysis-and-design/03-assignments/02-assignment_2)
+
 # Assignment 2 - Grade 3
 ##### Kateryna Melnyk, Paolo Molinaro, Richard Willhelm Oelschläger
 
